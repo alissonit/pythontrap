@@ -1,15 +1,18 @@
 import requests
 import json
 
-#CONSULTANDO CEP
 cep = "04578910"
 
+#request CEP
 response = requests.get(f"https://viacep.com.br/ws/{cep}/json/")
 
-#CONVERTENDO O JSON PARA UM OBJETO PYTHON
-data_json = json.loads(response.content)
+if response.status_code == 200: #get status code
+    
+    data_json = json.loads(response.content) #converting JSON to a python object
 
-print("Carregando infos sobre o CEP: {cep}...", end="\n\n")
+    print(f"Loading info CEP: {cep}...", end="\n\n")
 
-for k, v in data_json.items():
-    print(f"{k}: {v}")
+    for k, v in data_json.items():
+        print(f"{k}: {v}")
+else:
+    print(f"Error to make request, code error: {response.status_code}")
