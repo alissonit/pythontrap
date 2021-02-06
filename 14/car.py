@@ -35,7 +35,6 @@ class CarInfo:
         return status
             
 if __name__ == "__main__":
-    
     car = CarInfo("Ferrari", "red", 579, "two")
 
     print(f"Car info: {car.car_name} {car.color} {car.hp} {car.car_doors}")
